@@ -30,4 +30,5 @@ class Task2DateFormatterTest {
     fun testDateFormatter5() {
         assertEquals("Такого дня не существует", formatter.toTextDay("1", "13", "2020"))
     }
+
 }
