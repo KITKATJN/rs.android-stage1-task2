@@ -4,18 +4,17 @@ class DateFormatter {
 
     // TODO: Complete the following function
     fun toTextDay(day: String, month: String, year: String): String {
-        val inputYear=year.toInt()
-        val inputMonth=month.toInt()
-        val inputDay=day.toInt()
-val leapYear=inputYear%4!=0&&(if(inputMonth==2) {
-    inputDay>28
+
+
+val leapYear=year.toInt()%4!=0&&(if(month.toInt()==2) {
+    day.toInt()>28
 }else{
     false
 })
-        if(leapYear || inputMonth>12 ) return "Такого дня не существует"
+        if(leapYear || month.toInt()>12 ) return "Такого дня не существует"
         else {
          var codeOfMonth:Int=0
-            when(inputMonth){
+            when(month.toInt()){
                 1,10->codeOfMonth=1
                 2,3,11->codeOfMonth=4
                 4,7->codeOfMonth=0
@@ -25,19 +24,19 @@ val leapYear=inputYear%4!=0&&(if(inputMonth==2) {
                 9,12->codeOfMonth=6
             }
 
-            val codeOfYear:Int = if(inputYear>=2000) {
-                (6 + (inputYear - 2000) + (inputYear - 2000) / 4) % 7
+            val codeOfYear:Int = if(year.toInt()>=2000) {
+                (6 + (year.toInt() - 2000) + (year.toInt() - 2000) / 4) % 7
             } else {
-                ( (inputYear - 1900) + (inputYear - 1900) / 4) % 7
+                ( (year.toInt() - 1900) + (year.toInt() - 1900) / 4) % 7
             }
 
-            val dayOfWeek:Int=if(inputYear%4==0) {
-                (inputDay+codeOfMonth+codeOfYear)%7+1
+            val dayOfWeek:Int=if(year.toInt()%4==0) {
+                (day.toInt()+codeOfMonth+codeOfYear)%7+1
             } else {
-                (inputDay+codeOfMonth+codeOfYear)%7+1
+                (day.toInt()+codeOfMonth+codeOfYear)%7+1
             }
 
-            val textMonth=when(inputMonth){
+            val textMonth=when(month.toInt()){
                 1->"января"
                 2->"февраля"
                 3->"марта"
@@ -63,7 +62,7 @@ val leapYear=inputYear%4!=0&&(if(inputMonth==2) {
                 2->"воскресенье"
                 else -> "$dayOfWeek/$codeOfMonth/$codeOfYear"
             }
-            return "$inputDay $textMonth, $textDayOfWeek"
+            return "$day $textMonth, $textDayOfWeek"
         }
           }
 
